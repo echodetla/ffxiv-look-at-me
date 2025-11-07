@@ -29,18 +29,18 @@ jobs:
       - name: write version into jsons
         run: |
           $ver = '${{ github.ref_name }}'
-          $path = './LookAtMePlugin/bin/Release/LookAtMePlugin.json'
+          $path = './LookAtMePlugin/bin/x64/Release/LookAtMePlugin.json'
           $json = Get-Content -Raw $path | ConvertFrom-Json
           $json.AssemblyVersion = $ver
           $content = $json | ConvertTo-Json
           set-content -Path $path -Value $content
       - name: Archive
-        run: Compress-Archive -Path LookAtMePlugin/bin/Release/* -DestinationPath LookAtMePlugin.zip
+        run: Compress-Archive -Path LookAtMePlugin/bin/x64/Release/* -DestinationPath LookAtMePlugin.zip
       - name: Upload a Build Artifact
         uses: actions/upload-artifact@v4
         with:
           path: |
-            ./LookAtMePlugin/bin/Release/*
+            ./LookAtMePlugin/bin/x64/Release/*
       - name: Create Release
         id: create_release
         uses: actions/create-release@v1
