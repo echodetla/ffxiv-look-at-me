@@ -51,8 +51,8 @@ public class ChatWatcher : IDisposable
         var enabled = type switch
         {
             XivChatType.Say => lookAtMePlugin.Configuration.MonitorPublicChat,
-            XivChatType.Yell => lookAtMePlugin.Configuration.MonitorPublicChat,
-            XivChatType.Shout => lookAtMePlugin.Configuration.MonitorPublicChat,
+            XivChatType.Yell => lookAtMePlugin.Configuration.MonitorPublicYellChat,
+            XivChatType.Shout => lookAtMePlugin.Configuration.MonitorPublicShoutChat,
             XivChatType.CustomEmote => lookAtMePlugin.Configuration.MonitorPublicChat,
             XivChatType.StandardEmote => lookAtMePlugin.Configuration.MonitorPublicChat,
             XivChatType.Party => lookAtMePlugin.Configuration.MonitorParty,

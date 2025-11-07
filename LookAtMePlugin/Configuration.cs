@@ -11,6 +11,8 @@ public class Configuration : IPluginConfiguration
     public bool IsEnabled { get; set; } = true;
 
     public bool MonitorPublicChat { get; set; } = true;
+    public bool MonitorPublicYellChat { get; set; } = true;
+    public bool MonitorPublicShoutChat { get; set; } = true;
     public bool MonitorParty { get; set; } = true;
     public bool MonitorFc { get; set; } = false;
     public bool MonitorCwl1 { get; set; } = false;

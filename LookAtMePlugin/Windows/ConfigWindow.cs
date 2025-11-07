@@ -14,7 +14,7 @@ public class ConfigWindow : Window, IDisposable
         Flags = ImGuiWindowFlags.NoResize | ImGuiWindowFlags.NoCollapse | ImGuiWindowFlags.NoScrollbar |
                 ImGuiWindowFlags.NoScrollWithMouse;
 
-        Size = new Vector2(200, 300);
+        Size = new Vector2(200, 350);
         SizeCondition = ImGuiCond.Always;
 
         configuration = lookAtMePlugin.Configuration;
@@ -37,6 +37,21 @@ public class ConfigWindow : Window, IDisposable
             configuration.MonitorPublicChat = monitorPublicChat;
             configuration.Save();
         }
+        
+        var monitorPublicYellChat = configuration.MonitorPublicYellChat;
+        if (ImGui.Checkbox("Monitor the public yell chats", ref monitorPublicYellChat))
+        {
+            configuration.MonitorPublicYellChat = monitorPublicYellChat;
+            configuration.Save();
+        }
+        
+        var monitorPublicShoutChat = configuration.MonitorPublicShoutChat;
+        if (ImGui.Checkbox("Monitor the public shout chats", ref monitorPublicShoutChat))
+        {
+            configuration.MonitorPublicShoutChat = monitorPublicShoutChat;
+            configuration.Save();
+        }
+
     
         var monitorParty = configuration.MonitorParty;
         if (ImGui.Checkbox("Monitor the party", ref monitorParty))
