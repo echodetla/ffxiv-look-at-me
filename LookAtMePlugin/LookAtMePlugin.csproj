@@ -9,7 +9,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Content Include="LookAtMePlugin.json" />
+    <Content Include="LookAtMePlugin.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="packages.lock.json" />
   </ItemGroup>
 </Project>
