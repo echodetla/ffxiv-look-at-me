@@ -5,14 +5,14 @@
     "Punchline": "Look at the person talking to you /lookatme",
     "Description": "A plugin that targets the player that's talking to you, it shifts your target to the last message received, if you want to monitor that chat",
     "InternalName": "LookAtMePlugin",
-    "AssemblyVersion": "0.8.9.6",
-    "TestingAssemblyVersion": "0.8.9.6",
+    "AssemblyVersion": "0.8.9.7",
+    "TestingAssemblyVersion": "0.8.9.7",
     "RepoUrl": "https://github.com/echodetla/ffxiv-look-at-me",
     "ApplicableVersion": "any",
     "DalamudApiLevel": 13,
     "TestingDalamudApiLevel": 13,
-    "DownloadLinkInstall": "https://github.com/echodetla/ffxiv-look-at-me/releases/download/0.8.9.6/LookAtMePlugin.zip",
-    "DownloadLinkTesting": "https://github.com/echodetla/ffxiv-look-at-me/releases/download/0.8.9.6/LookAtMePlugin.zip",
-    "DownloadLinkUpdate": "https://github.com/echodetla/ffxiv-look-at-me/releases/download/0.8.9.6/LookAtMePlugin.zip"
+    "DownloadLinkInstall": "https://github.com/echodetla/ffxiv-look-at-me/releases/download/0.8.9.7/LookAtMePlugin.zip",
+    "DownloadLinkTesting": "https://github.com/echodetla/ffxiv-look-at-me/releases/download/0.8.9.7/LookAtMePlugin.zip",
+    "DownloadLinkUpdate": "https://github.com/echodetla/ffxiv-look-at-me/releases/download/0.8.9.7/LookAtMePlugin.zip"
   }
 ]
