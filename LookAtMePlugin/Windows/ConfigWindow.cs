@@ -11,10 +11,9 @@ public class ConfigWindow : Window, IDisposable
 
     public ConfigWindow(LookAtMePlugin lookAtMePlugin) : base("Look at me Configuration###LookAtConfig")
     {
-        Flags = ImGuiWindowFlags.NoResize | ImGuiWindowFlags.NoCollapse | ImGuiWindowFlags.NoScrollbar |
-                ImGuiWindowFlags.NoScrollWithMouse;
+        Flags = ImGuiWindowFlags.NoScrollWithMouse;
 
-        Size = new Vector2(200, 350);
+        Size = new Vector2(220, 380);
         SizeCondition = ImGuiCond.Always;
 
         configuration = lookAtMePlugin.Configuration;
@@ -57,6 +56,13 @@ public class ConfigWindow : Window, IDisposable
         if (ImGui.Checkbox("Monitor the party", ref monitorParty))
         {
             configuration.MonitorParty = monitorParty;
+            configuration.Save();
+        }
+        
+        var monitorAlliance = configuration.MonitorAlliance;
+        if (ImGui.Checkbox("Monitor the alliance chat", ref monitorAlliance))
+        {   
+            configuration.MonitorAlliance = monitorAlliance;
             configuration.Save();
         }
     

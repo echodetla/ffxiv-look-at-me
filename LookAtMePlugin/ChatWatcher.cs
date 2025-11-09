@@ -52,6 +52,7 @@ public class ChatWatcher : IDisposable
                 XivChatType.CustomEmote => lookAtMePlugin.Configuration.MonitorPublicChat,
                 XivChatType.StandardEmote => lookAtMePlugin.Configuration.MonitorPublicChat,
                 XivChatType.Party => lookAtMePlugin.Configuration.MonitorParty,
+                XivChatType.Alliance => lookAtMePlugin.Configuration.MonitorAlliance,
                 XivChatType.FreeCompany => lookAtMePlugin.Configuration.MonitorFc,
                 XivChatType.CrossLinkShell1 => lookAtMePlugin.Configuration.MonitorCwl1,
                 XivChatType.CrossLinkShell2 => lookAtMePlugin.Configuration.MonitorCwl2,
