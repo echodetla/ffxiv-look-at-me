@@ -11,10 +11,8 @@ public class ConfigWindow : Window, IDisposable
 
     public ConfigWindow(LookAtMePlugin lookAtMePlugin) : base("Look at me Configuration###LookAtConfig")
     {
-        Flags = ImGuiWindowFlags.NoScrollWithMouse;
-
         Size = new Vector2(220, 380);
-        SizeCondition = ImGuiCond.Always;
+        SizeCondition = ImGuiCond.FirstUseEver;
 
         configuration = lookAtMePlugin.Configuration;
     }
