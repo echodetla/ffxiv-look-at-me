@@ -22,7 +22,7 @@ public sealed class LookAtMePlugin : IDalamudPlugin
 
     [PluginService]
     internal static IClientState ClientState { get; private set; } = null!;
-
+    
     [PluginService]
     internal static IObjectTable ObjectTable { get; private set; } = null!;
 
@@ -90,7 +90,7 @@ public sealed class LookAtMePlugin : IDalamudPlugin
 
     private void OnClientStateOnLogin()
     {
-        var player = Framework.RunOnFrameworkThread(() => ClientState.LocalPlayer).Result;
+        var player = Framework.RunOnFrameworkThread(() => ObjectTable.LocalPlayer).Result;
         if (player != null)
         {
             CachedLocalPlayer = player;
@@ -118,7 +118,7 @@ public sealed class LookAtMePlugin : IDalamudPlugin
         {
             if (CachedLocalPlayer == null)
             {
-                var player = framework.RunOnFrameworkThread(() => ClientState.LocalPlayer).Result;
+                var player = framework.RunOnFrameworkThread(() => ObjectTable.LocalPlayer).Result;
                 if (player != null)
                 {
                     CachedLocalPlayer = player;

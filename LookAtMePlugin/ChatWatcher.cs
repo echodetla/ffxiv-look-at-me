@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using Dalamud.Game.Chat;
 using Dalamud.Game.ClientState.Objects;
 using Dalamud.Game.ClientState.Objects.Enums;
 using Dalamud.Game.ClientState.Objects.SubKinds;
@@ -29,22 +30,21 @@ public class ChatWatcher : IDisposable
         this.targetManager = targetManager;
         this.objectTable = objectTable;
         this.log = log;
-        chat.ChatMessage += ChatOnChatMessage;
+        chat.ChatMessage += HandleChatMessage;
     }
 
-    private void ChatOnChatMessage(
-        XivChatType type, int timestamp, ref SeString sender, ref SeString message, ref bool isHandled)
+    private void HandleChatMessage(IHandleableChatMessage message)
     {
-        try
+         try
         {
-            if (isHandled)
+            if (message.IsHandled)
                 return;
 
             //todo possibly do this on the main plugin and remove the entire watcher if disabled
             if (!lookAtMePlugin.Configuration.IsEnabled)
                 return;
 
-            var enabled = type switch
+            var enabled = message.LogKind switch
             {
                 XivChatType.Say => lookAtMePlugin.Configuration.MonitorPublicChat,
                 XivChatType.Yell => lookAtMePlugin.Configuration.MonitorPublicYellChat,
@@ -82,10 +82,10 @@ public class ChatWatcher : IDisposable
 
 
 #if DEBUG
-            log.Debug("Processing message of type: {type} from sender: {sender}", type, sender.TextValue);
+            log.Debug("Processing message of type: {type} from sender: {sender}", message.LogKind, message.Sender.TextValue);
 # endif
 
-            var playerPayload = sender.Payloads.FirstOrDefault(x => x.Type == PayloadType.Player) as PlayerPayload;
+            var playerPayload = message.Sender.Payloads.FirstOrDefault(x => x.Type == PayloadType.Player) as PlayerPayload;
             if (playerPayload == null)
             {
                 //play payload not existing means we can't deduce a player name or more probably its ourself
@@ -110,13 +110,13 @@ public class ChatWatcher : IDisposable
             log.Error($"Error in ChatOnChatMessage: {ex}");
         }
     }
-
-    private static bool InCombat(IGameObject actor) =>
+    
+    private bool InCombat(IGameObject actor) =>
         actor is IPlayerCharacter pc && pc.StatusFlags.HasFlag(StatusFlags.InCombat);
 
 
     public void Dispose()
     {
-        chat.ChatMessage -= ChatOnChatMessage;
+        chat.ChatMessage -= HandleChatMessage;
     }
 }
